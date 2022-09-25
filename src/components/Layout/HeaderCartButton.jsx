@@ -21,9 +21,13 @@ const HeaderCartButton = (props) => {
       return;
     }
     setButtonIsHighlighted(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setButtonIsHighlighted(false)
     }, 300)
+      //Set a cleanup function here - always good practice when using something like setTimout in useEffect
+    return () => {
+      clearTimeout(timer)
+    }
   }, [items]);
 
   return (
